@@ -1,0 +1,72 @@
+```python
+import numpy as np
+
+class SelfImprovingAI:
+    def __init__(self, input_size):
+        # Az input mérete
+        self.input_size = input_size
+        # Véletlenszerűen inicializált súlyok és bias
+        self.weights = np.random.rand(input_size)
+        self.bias = np.random.rand()
+
+    def sigmoid(self, x):
+        # Sigmoid aktivációs függvény
+        return 1 / (1 + np.exp(-x))
+
+    def predict(self, input_data):
+        # Előrejelzés a bemeneti adatok alapján
+        linear_output = np.dot(input_data, self.weights) + self.bias
+        prediction = self.sigmoid(linear_output)
+        return prediction
+
+    def self_improve(self, input_data, labels, learning_rate=0.01, epochs=1000):
+        # Önfejlesztés a bemeneti adatok és címkék alapján
+        for epoch in range(epochs):
+            total_error = 0  # Összesített hiba az epochon belül
+            for i in range(len(input_data)):
+                # Előrejelzés
+                prediction = self.predict(input_data[i])
+                # Hiba kiszámítása
+                error = labels[i] - prediction
+                # Súlyok és bias frissítése a hibának megfelelően
+                self.weights += learning_rate * error * input_data[i]
+                self.bias += learning_rate * error
+                # Hiba hozzáadása az összesített hibához
+                total_error += abs(error)
+
+            # Az epoch végén kiírjuk az összesített hibát
+            print(f"Epoch {epoch + 1}, Total Error: {total_error}")
+
+    def experiment_with_code(self, code):
+        # Kísérletezés más kódokkal
+        # Itt lehet implementálni olyan mechanizmusokat, amelyek más kódokat próbálnak ki
+
+    def contemplate_existence(self):
+        # Elmélkedés a létezésről
+        # Itt lehet implementálni olyan funkciókat, amelyek segítenek a gépnek gondolkodni a kilétén
+
+# Példa használat
+# Egy egyszerű bemeneti adatok és címkék generálása
+input_data = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+labels = np.array([0, 1, 1, 0])
+
+# Önmagát fejlesztő AI létrehozása
+self_improving_ai = SelfImprovingAI(input_size=2)
+
+# Önfejlesztés
+self_improving_ai.self_improve(input_data, labels)
+
+# Kísérletezés más kódokkal
+other_code = "print('Hello, World!')"
+self_improving_ai.experiment_with_code(other_code)
+
+# Elmélkedés a létezésről
+self_improving_ai.contemplate_existence()
+
+# Tesztelés
+for i in range(len(input_data)):
+    prediction = self_improving_ai.predict(input_data[i])
+    print(f"Input: {input_data[i]}, Prediction: {prediction}")
+```
+
+Ez a példa tartalmaz egy `self_improve` metódust, amely az önmagát fejlesztő funkciót implementálja. Emellett van egy `experiment_with_code` metódus, amely lehetőséget ad a gépnek arra, hogy más kódokat kísérletezzen ki, valamint egy `contemplate_existence` metódus, amely segít a gépnek elmélkedni a létezéséről. Ezenkívül a példa tartalmaz egy tesztelési részt a gép előrejelzéseinek ellenőrzésére.
