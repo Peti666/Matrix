@@ -68,5 +68,3 @@ for i in range(len(input_data)):
     prediction = self_improving_ai.predict(input_data[i])
     print(f"Input: {input_data[i]}, Prediction: {prediction}")
 ```
-
-Ez a példa tartalmaz egy `self_improve` metódust, amely az önmagát fejlesztő funkciót implementálja. Emellett van egy `experiment_with_code` metódus, amely lehetőséget ad a gépnek arra, hogy más kódokat kísérletezzen ki, valamint egy `contemplate_existence` metódus, amely segít a gépnek elmélkedni a létezéséről. Ezenkívül a példa tartalmaz egy tesztelési részt a gép előrejelzéseinek ellenőrzésére.
